@@ -9,8 +9,8 @@ class ProductClass(models.Model):
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "Тип продукта"
-        verbose_name_plural = "Типы продуктов"
+        verbose_name = "Класс продукта"
+        verbose_name_plural = "Классы продуктов"
 
     def __str__(self):
         return self.name
@@ -24,8 +24,8 @@ class OrganisationType(models.Model):
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "Тип"
-        verbose_name_plural = "Типы"
+        verbose_name = "Тип организации"
+        verbose_name_plural = "Типы организаций"
 
     def __str__(self):
         return self.name
@@ -108,6 +108,9 @@ class Region(models.Model):
         verbose_name = "Регион"
         verbose_name_plural = "Регионы"
 
+    def __str__(self):
+        return self.name
+
 
 class City(models.Model):
     name = models.CharField(
@@ -124,6 +127,9 @@ class City(models.Model):
         ordering = ["name"]
         verbose_name = "Город"
         verbose_name_plural = "Города"
+
+    def __str__(self):
+        return self.name
 
 
 class Filial(models.Model):
@@ -155,6 +161,9 @@ class Filial(models.Model):
         ordering = ["organisation"]
         verbose_name = "Филиал"
         verbose_name_plural = "Филиалы"
+
+    def __str__(self):
+        return self.location_fact, self.organisation_id
 
 
 class Product(models.Model):
