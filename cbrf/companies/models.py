@@ -36,12 +36,12 @@ class ProductType(models.Model):
         max_length=200,
         verbose_name='Название типа продукта'
     )
-    organisation_type_id = models.ForeignKey(
+    organisation_type = models.ForeignKey(
         OrganisationType,
         on_delete=models.CASCADE,
         verbose_name='Тип организации'
     )
-    product_class_id = models.ForeignKey(
+    product_class = models.ForeignKey(
         ProductClass,
         on_delete=models.CASCADE,
         verbose_name='Класс продукта'
@@ -82,7 +82,7 @@ class Organisation(models.Model):
     date_reg = models.DateField(
         verbose_name='Дата регистрации'
     )
-    organisation_type_id = models.ForeignKey(
+    organisation_type = models.ForeignKey(
         OrganisationType,
         on_delete=models.CASCADE,
         verbose_name='Тип организации'
@@ -114,7 +114,7 @@ class City(models.Model):
         max_length=150,
         verbose_name='Город'
     )
-    region_id = models.ForeignKey(
+    region = models.ForeignKey(
         Region,
         on_delete=models.CASCADE,
         verbose_name='Регион'
@@ -127,7 +127,7 @@ class City(models.Model):
 
 
 class Filial(models.Model):
-    organisation_id = models.ForeignKey(
+    organisation = models.ForeignKey(
         Organisation,
         on_delete=models.CASCADE,
         verbose_name='Организация'
@@ -145,20 +145,20 @@ class Filial(models.Model):
     phone = models.IntegerField(
         verbose_name="Номер телефона"
     )
-    city_id = models.ForeignKey(
+    city = models.ForeignKey(
         City,
         on_delete=models.CASCADE,
         verbose_name='Город'
     )
 
     class Meta:
-        ordering = ["organisation_id"]
+        ordering = ["organisation"]
         verbose_name = "Филиал"
         verbose_name_plural = "Филиалы"
 
 
 class Product(models.Model):
-    filial_id = models.ForeignKey(
+    filial = models.ForeignKey(
         Filial,
         on_delete=models.CASCADE,
         verbose_name='Филиал организации'
@@ -167,7 +167,7 @@ class Product(models.Model):
         max_length=500,
         verbose_name="Название продукта"
     )
-    product_type_id = models.ForeignKey(
+    product_type = models.ForeignKey(
         ProductType,
         on_delete=models.CASCADE,
         verbose_name='Тип продукта'
