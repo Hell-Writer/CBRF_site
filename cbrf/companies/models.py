@@ -109,7 +109,7 @@ class Region(models.Model):
         verbose_name_plural = "Регионы"
 
     def __str__(self):
-        return self.name
+        return self.name.lower()
 
 
 class City(models.Model):
